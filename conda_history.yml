@@ -7,5 +7,4 @@ dependencies:
   - pynput==1.6.8
   - psutil
   - pillow
-  - dlib
-  - pywin32                
+  - dlib               
