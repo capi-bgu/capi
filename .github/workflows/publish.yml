@@ -2,7 +2,7 @@ name: Publish to anaconda
 
 on:
   push:
-    branches: [master]
+    branches: [actions]
 
 jobs:
   publish:
