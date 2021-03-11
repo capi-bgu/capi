@@ -1,0 +1,26 @@
+package:
+  name: oratio
+  version: 0.1.0
+
+source:
+  git_url: https://github.com/capi-bgu/oratio.git
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  build:
+    - python=3.8
+    - setuptools
+
+  run:
+    - python=3.8
+    - opencv
+    - pynput=1.6.8
+    - psutil
+    - pillow
+    - dlib
+
+about:
+  home: https://github.com/capi-bgu/oratio

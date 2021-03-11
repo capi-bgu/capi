@@ -1,17 +1,17 @@
-name: Publish to anaconda
+name: Validate commit
 
-on: [push]
+on:
+  push:
+    branches: [actions]
+  pull_request:
+    branches: [actions]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-    name: Publish to anaconda
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup conda
+      - name: Setup conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:
           miniconda-version: 'latest'
@@ -24,10 +24,7 @@ jobs:
       - name: Lint with flake8
         run: |
           conda install flake8
+          conda list
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      - name: Publish to anaconda
-        run: conda install conda-build
-      - name: List dependencies
-        run: conda list
       
