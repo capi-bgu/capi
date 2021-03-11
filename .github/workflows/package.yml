@@ -12,16 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup conda
-        uses: s-weigand/setup-conda@v1
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          update-conda: true
-          python-version: 3.8
-          conda-channels: anaconda, conda-forge
+          miniconda-version: 'latest'
+          channels: anaconda, conda-forge
+          auto-update-conda: true
+          auto-activate-base: false
+          environment-file: conda_history.yml
+          activate-environment: oratio
       - run: conda --version
-      - name: Conda environment creation
-        run: |
-          conda env create --file conda_history.yml --name oratio
-          source activate oratio
       - name: Lint with flake8
         run: |
           conda install flake8
