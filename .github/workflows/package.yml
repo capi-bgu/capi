@@ -21,7 +21,7 @@ jobs:
       - name: Conda environment creation
         run: |
           conda env create --file conda_history.yml --name oratio
-          conda activate oratio
+          source activate oratio
       - name: Lint with flake8
         run: |
           conda install flake8
